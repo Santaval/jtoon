@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 import { 
   FileJson, 
 //   FileSpreadsheet, 
-//   Database, 
+  Database, 
 //   Code2, 
   TrendingDown,
   ArrowRight,
@@ -48,16 +48,16 @@ const converterTools = [
 //     popular: false,
 //     color: 'from-purple-500 to-violet-500',
 //   },
-//   {
-//     id: 'api-access',
-//     title: 'API Access',
-//     description: 'Programmatic access to all TOON converters',
-//     icon: Database,
-//     href: '/api',
-//     savings: 'Custom',
-//     popular: true,
-//     color: 'from-orange-500 to-red-500',
-//   },
+  {
+    id: 'api-access',
+    title: 'API Access',
+    description: 'Programmatic access to all TOON converters',
+    icon: Database,
+    href: '/api',
+    savings: 'Custom',
+    popular: true,
+    color: 'from-orange-500 to-red-500',
+  },
 ]
 
 export function HeroSection() {
@@ -109,10 +109,10 @@ export function HeroSection() {
               <Zap className="w-4 h-4 text-yellow-500" />
               <span>Instant conversion</span>
             </div>
-            {/* <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <Database className="w-4 h-4 text-blue-500" />
               <span>API available</span>
-            </div> */}
+            </div>
           </motion.div>
         </div>
 
@@ -121,8 +121,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          //className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-          className='flex justify-center items-center mb-12'
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12"
         >
           {converterTools.map((tool, index) => (
             <motion.div
@@ -177,7 +176,7 @@ export function HeroSection() {
                     size="sm" 
                     className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
                   >
-                    {tool.id === 'json-to-toon' ? (
+                    {tool.id === 'json-to-toon' || tool.id === 'api-access' ? (
                       <Link to={tool.href}>
                         Try Now
                         <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />

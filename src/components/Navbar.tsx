@@ -14,6 +14,7 @@ import {
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'JSON Converter', href: '/json-to-toon' },
+  { name: 'API Access', href: '/api' },
   { name: 'Features', href: '/#features' },
   { name: 'Examples', href: '/#examples' },
   { name: 'Documentation', href: '/#docs' },
