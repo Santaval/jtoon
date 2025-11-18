@@ -91,7 +91,7 @@ export function FeaturesSection() {
               colorFrom="#3b82f6"
               colorTo="#8b5cf6"
             >
-              JTOON?
+              MyToonTools?
             </AnimatedGradientText>
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-muted-foreground">

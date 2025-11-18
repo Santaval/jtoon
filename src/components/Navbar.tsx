@@ -43,7 +43,7 @@ export function Navbar() {
                 J
               </div>
               <AnimatedShinyText className="text-xl font-bold tracking-tight">
-                JTOON
+                MyToonTools
               </AnimatedShinyText>
             </Link>
           </motion.div>
@@ -97,7 +97,7 @@ export function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <Button variant="ghost" size="sm" asChild>
-              <a href="https://github.com/Santaval/jtoon" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Santaval/MyToonTools" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
               </a>
             </Button>
@@ -136,7 +136,7 @@ export function Navbar() {
                     <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-linear-to-br from-primary to-primary/80 text-primary-foreground font-bold text-sm">
                       J
                     </div>
-                    <span className="text-xl font-bold tracking-tight">JTOON</span>
+                    <span className="text-xl font-bold tracking-tight">MyToonTools</span>
                   </Link>
 
                   {/* Mobile Navigation */}
@@ -186,7 +186,7 @@ export function Navbar() {
                   {/* Mobile Social Links */}
                   <div className="flex items-center space-x-4 px-2 pt-4 border-t">
                     <Button variant="ghost" size="sm" asChild>
-                      <a href="https://github.com/Santaval/jtoon" target="_blank" rel="noopener noreferrer">
+                      <a href="https://github.com/Santaval/MyToonTools" target="_blank" rel="noopener noreferrer">
                         <Github className="h-4 w-4" />
                       </a>
                     </Button>

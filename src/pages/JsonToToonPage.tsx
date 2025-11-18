@@ -81,7 +81,7 @@ const useCases = [
 export default function JsonToToonPage() {
   useEffect(() => {
     // Update document title and meta description
-    document.title = "JSON to TOON Converter - Reduce LLM Token Costs by 60% | JTOON"
+    document.title = "JSON to TOON Converter - Reduce LLM Token Costs by 60% | MyToonTools"
     
     // Update meta description
     const metaDescription = document.querySelector('meta[name="description"]')
@@ -106,7 +106,7 @@ export default function JsonToToonPage() {
     
     const ogUrl = document.querySelector('meta[property="og:url"]')
     if (ogUrl) {
-      ogUrl.setAttribute('content', 'https://jtoon.dev/json-to-toon')
+      ogUrl.setAttribute('content', 'https://MyToonTools.dev/json-to-toon')
     }
     
     // Add JSON-LD structured data
@@ -115,7 +115,7 @@ export default function JsonToToonPage() {
       "@type": "WebApplication",
       "name": "JSON to TOON Converter",
       "description": "Free online JSON to TOON converter that reduces LLM token costs by up to 60%",
-      "url": "https://jtoon.dev/json-to-toon",
+      "url": "https://MyToonTools.dev/json-to-toon",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Web Browser",
       "offers": {
@@ -125,8 +125,8 @@ export default function JsonToToonPage() {
       },
       "creator": {
         "@type": "Organization",
-        "name": "JTOON",
-        "url": "https://jtoon.dev"
+        "name": "MyToonTools",
+        "url": "https://MyToonTools.dev"
       },
       "keywords": "JSON converter, TOON format, token optimization, LLM cost reduction, AI data processing",
       "featureList": [
@@ -157,7 +157,7 @@ export default function JsonToToonPage() {
       canonical.setAttribute('rel', 'canonical')
       document.head.appendChild(canonical)
     }
-    canonical.setAttribute('href', 'https://jtoon.dev/json-to-toon')
+    canonical.setAttribute('href', 'https://MyToonTools.dev/json-to-toon')
     
     return () => {
       // Cleanup on unmount
