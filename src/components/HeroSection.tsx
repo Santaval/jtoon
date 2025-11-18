@@ -8,9 +8,9 @@ import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { 
   FileJson, 
-  FileSpreadsheet, 
-  Database, 
-  Code2, 
+//   FileSpreadsheet, 
+//   Database, 
+//   Code2, 
   TrendingDown,
   ArrowRight,
   Sparkles,
@@ -28,36 +28,36 @@ const converterTools = [
     popular: true,
     color: 'from-blue-500 to-cyan-500',
   },
-  {
-    id: 'csv-to-toon',
-    title: 'CSV to TOON',
-    description: 'Transform CSV data into structured TOON format',
-    icon: FileSpreadsheet,
-    href: '/csv-to-toon',
-    savings: '20-40%',
-    popular: false,
-    color: 'from-green-500 to-emerald-500',
-  },
-  {
-    id: 'xml-to-toon',
-    title: 'XML to TOON',
-    description: 'Convert XML documents to compact TOON notation',
-    icon: Code2,
-    href: '/xml-to-toon',
-    savings: '40-70%',
-    popular: false,
-    color: 'from-purple-500 to-violet-500',
-  },
-  {
-    id: 'api-access',
-    title: 'API Access',
-    description: 'Programmatic access to all TOON converters',
-    icon: Database,
-    href: '/api',
-    savings: 'Custom',
-    popular: true,
-    color: 'from-orange-500 to-red-500',
-  },
+//   {
+//     id: 'csv-to-toon',
+//     title: 'CSV to TOON',
+//     description: 'Transform CSV data into structured TOON format',
+//     icon: FileSpreadsheet,
+//     href: '/csv-to-toon',
+//     savings: '20-40%',
+//     popular: false,
+//     color: 'from-green-500 to-emerald-500',
+//   },
+//   {
+//     id: 'xml-to-toon',
+//     title: 'XML to TOON',
+//     description: 'Convert XML documents to compact TOON notation',
+//     icon: Code2,
+//     href: '/xml-to-toon',
+//     savings: '40-70%',
+//     popular: false,
+//     color: 'from-purple-500 to-violet-500',
+//   },
+//   {
+//     id: 'api-access',
+//     title: 'API Access',
+//     description: 'Programmatic access to all TOON converters',
+//     icon: Database,
+//     href: '/api',
+//     savings: 'Custom',
+//     popular: true,
+//     color: 'from-orange-500 to-red-500',
+//   },
 ]
 
 export function HeroSection() {
@@ -89,7 +89,7 @@ export function HeroSection() {
             </h1>
             
             <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl">
-              Professional suite of TOON converters and API tools. Transform JSON, CSV, XML and more 
+              Professional suite of TOON converters. Transform JSON and more 
               into token-efficient format that <strong>reduces LLM costs by up to 70%</strong>.
             </p>
           </motion.div>
@@ -109,10 +109,10 @@ export function HeroSection() {
               <Zap className="w-4 h-4 text-yellow-500" />
               <span>Instant conversion</span>
             </div>
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <Database className="w-4 h-4 text-blue-500" />
               <span>API available</span>
-            </div>
+            </div> */}
           </motion.div>
         </div>
 
@@ -121,7 +121,8 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          //className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          className='flex justify-center items-center mb-12'
         >
           {converterTools.map((tool, index) => (
             <motion.div
@@ -209,6 +210,7 @@ export function HeroSection() {
               borderRadius="8px"
               background="rgba(59, 130, 246, 1)"
               className="px-8 py-3 text-base font-semibold bg-linear-to-r from-blue-500 to-purple-500"
+              onClick={() => {window.location.href = '/json-to-toon'}}
             >
               <Link to="/json-to-toon" className="flex items-center gap-2">
                 Start Converting
@@ -216,7 +218,7 @@ export function HeroSection() {
               </Link>
             </ShimmerButton>
             
-            <Button 
+            {/* <Button 
               variant="outline" 
               size="lg" 
               asChild
@@ -225,7 +227,7 @@ export function HeroSection() {
               <a href="#features">
                 View Documentation
               </a>
-            </Button>
+            </Button> */}
           </div>
           
           <p className="mt-6 text-sm text-muted-foreground max-w-md mx-auto">
