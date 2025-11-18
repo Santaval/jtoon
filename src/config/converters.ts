@@ -15,7 +15,7 @@ const jsonExampleData = {
   metadata: {
     total: 3,
     page: 1,
-    generated: "2024-11-18T00:30:00Z"
+    generated: "2025-11-18T00:30:00Z"
   }
 }
 
@@ -59,7 +59,7 @@ const yamlExampleData = `users:
 metadata:
   total: 3
   page: 1
-  generated: "2024-11-18T00:30:00Z"`
+  generated: "2025-11-18T00:30:00Z"`
 
 export const conversionConfigs: Record<ConversionType, ConversionConfig> = {
   'json-to-toon': {

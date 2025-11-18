@@ -134,7 +134,7 @@ const exampleData = {
   metadata: {
     total: 3,
     page: 1,
-    generated: "2024-11-18T00:30:00Z"
+    generated: "2025-11-18T00:30:00Z"
   }
 }
 
@@ -722,7 +722,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="py-12 text-center">
             <p className="text-muted-foreground">
-              © 2024 MyToonTools. Built with ❤️ for the AI community.
+              © 2025 MyToonTools. Built with ❤️ for the AI community.
             </p>
             <nav className="mt-4" aria-label="Footer navigation">
               <ul className="flex justify-center space-x-6 text-sm">

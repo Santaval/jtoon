@@ -41,7 +41,7 @@ const jsonExamples = {
       metadata: {
         total: 3,
         page: 1,
-        generated: "2024-11-18T00:30:00Z"
+        generated: "2025-11-18T00:30:00Z"
       }
     }
   },
@@ -88,7 +88,7 @@ const jsonExamples = {
           hasNext: false
         }
       },
-      timestamp: "2024-11-18T00:30:00Z"
+      timestamp: "2025-11-18T00:30:00Z"
     }
   }
 }
