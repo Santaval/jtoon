@@ -1,7 +1,4 @@
 @import "tailwindcss";
-
-@plugin "tailwindcss-animate";
-
 @custom-variant dark (&:is(.dark *));
 :root {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -127,6 +124,12 @@ body {
     }
   30%, 60% {
     background-position: calc(100% + var(--shiny-width)) 0;
+    }
+  }
+  --animate-gradient: gradient 8s linear infinite;
+  @keyframes gradient {
+  to {
+    background-position: var(--bg-size, 300%) 0;
     }
   }}
 
