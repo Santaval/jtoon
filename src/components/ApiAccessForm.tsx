@@ -161,10 +161,6 @@ export function ApiAccessForm() {
     }
   }
 
-  const copyApiKey = () => {
-    navigator.clipboard.writeText(apiKey)
-    // Could add a toast notification here
-  }
 
   if (submitStatus === 'success' && apiKey) {
     return (
