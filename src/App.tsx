@@ -3,14 +3,18 @@ import Home from "./pages/Home";
 import JsonToToonPage from "./pages/JsonToToonPage";
 import CsvToToonPage from "./pages/CsvToToonPage";
 import ApiPage from "./pages/ApiPage";
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App() {
-  return <BrowserRouter>
+  return <>
+    <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/json-to-toon" element={<JsonToToonPage />} />
       <Route path="/csv-to-toon" element={<CsvToToonPage />} />
       <Route path="/api" element={<ApiPage />} />
     </Routes>
-  </BrowserRouter>;
+  </BrowserRouter>
+  <Analytics />
+  </>
 }
