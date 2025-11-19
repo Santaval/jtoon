@@ -1,6 +1,6 @@
 import { 
   FileJson, 
-//   FileSpreadsheet, 
+  FileSpreadsheet, 
 //   Code2, 
 //   FileText 
 } from 'lucide-react'
@@ -19,10 +19,12 @@ const jsonExampleData = {
   }
 }
 
-// const csvExampleData = `id,name,email,role,active
-// 1,Alice Johnson,alice@example.com,admin,true
-// 2,Bob Smith,bob@example.com,user,false
-// 3,Carol Davis,carol@example.com,moderator,true`
+const csvExampleData = `id,name,email,role,active
+1,Alice Johnson,alice@example.com,admin,true
+2,Bob Smith,bob@example.com,user,false
+3,Carol Davis,carol@example.com,moderator,true
+4,Diana Wilson,diana@example.com,editor,true
+5,Edward Brown,edward@example.com,viewer,false`
 
 // const xmlExampleData = `<?xml version="1.0" encoding="UTF-8"?>
 // <users>
@@ -79,6 +81,25 @@ export const conversionConfigs: Record<ConversionType, ConversionConfig> = {
       'Best results with nested objects and arrays containing similar structures',
       'The more repetitive your JSON structure, the greater the token savings',
       'Try pasting your own API responses to see real-world savings'
+    ]
+  },
+  'csv-to-toon': {
+    id: 'csv-to-toon',
+    name: 'CSV to TOON',
+    description: 'Transform CSV data into structured TOON format',
+    icon: FileSpreadsheet,
+    inputLabel: 'CSV Input',
+    outputLabel: 'TOON Output',
+    inputPlaceholder: 'Paste your CSV data here...',
+    outputPlaceholder: 'TOON format will appear here...',
+    fileExtension: 'toon',
+    mimeType: 'text/plain',
+    exampleData: csvExampleData,
+    tips: [
+      'CSV headers are automatically detected and preserved',
+      'Large CSV files benefit most from TOON compression',
+      'Numeric data is optimally encoded for token efficiency',
+      'Best for tabular data with repeated column structures'
     ]
   },
 //   'csv-to-toon': {

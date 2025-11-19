@@ -7,31 +7,31 @@ const countTokens = (text: string): number => {
 }
 
 // CSV parser utility
-// const parseCSV = (csvText: string): any[] => {
-//   const lines = csvText.trim().split('\n')
-//   if (lines.length < 2) return []
+const parseCSV = (csvText: string): any[] => {
+  const lines = csvText.trim().split('\n')
+  if (lines.length < 2) return []
   
-//   const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''))
-//   const data = []
+  const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, ''))
+  const data = []
   
-//   for (let i = 1; i < lines.length; i++) {
-//     const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''))
-//     const row: any = {}
+  for (let i = 1; i < lines.length; i++) {
+    const values = lines[i].split(',').map(v => v.trim().replace(/"/g, ''))
+    const row: any = {}
     
-//     headers.forEach((header, index) => {
-//       const value = values[index]
-//       // Try to parse as number or boolean
-//       if (value === 'true') row[header] = true
-//       else if (value === 'false') row[header] = false
-//       else if (!isNaN(Number(value)) && value !== '') row[header] = Number(value)
-//       else row[header] = value
-//     })
+    headers.forEach((header, index) => {
+      const value = values[index]
+      // Try to parse as number or boolean
+      if (value === 'true') row[header] = true
+      else if (value === 'false') row[header] = false
+      else if (!isNaN(Number(value)) && value !== '') row[header] = Number(value)
+      else row[header] = value
+    })
     
-//     data.push(row)
-//   }
+    data.push(row)
+  }
   
-//   return data
-// }
+  return data
+}
 
 // // Basic XML to JSON parser (simplified)
 // const parseXML = (xmlText: string): any => {
@@ -69,6 +69,10 @@ export class ConversionService {
       switch (type) {
         case 'json-to-toon':
           parsedData = JSON.parse(input)
+          break
+          
+        case 'csv-to-toon':
+          parsedData = parseCSV(input)
           break
           
         // case 'csv-to-toon':

@@ -8,7 +8,7 @@ import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { 
   FileJson, 
-//   FileSpreadsheet, 
+  FileSpreadsheet, 
   Database, 
 //   Code2, 
   TrendingDown,
@@ -28,16 +28,16 @@ const converterTools = [
     popular: true,
     color: 'from-blue-500 to-cyan-500',
   },
-//   {
-//     id: 'csv-to-toon',
-//     title: 'CSV to TOON',
-//     description: 'Transform CSV data into structured TOON format',
-//     icon: FileSpreadsheet,
-//     href: '/csv-to-toon',
-//     savings: '20-40%',
-//     popular: false,
-//     color: 'from-green-500 to-emerald-500',
-//   },
+  {
+    id: 'csv-to-toon',
+    title: 'CSV to TOON',
+    description: 'Transform CSV data into structured TOON format',
+    icon: FileSpreadsheet,
+    href: '/csv-to-toon',
+    savings: '20-40%',
+    popular: false,
+    color: 'from-green-500 to-emerald-500',
+  },
 //   {
 //     id: 'xml-to-toon',
 //     title: 'XML to TOON',
@@ -121,7 +121,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12"
         >
           {converterTools.map((tool, index) => (
             <motion.div
@@ -176,7 +176,7 @@ export function HeroSection() {
                     size="sm" 
                     className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
                   >
-                    {tool.id === 'json-to-toon' || tool.id === 'api-access' ? (
+                    {tool.id === 'json-to-toon' || tool.id === 'csv-to-toon' || tool.id === 'api-access' ? (
                       <Link to={tool.href}>
                         Try Now
                         <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
