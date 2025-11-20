@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { ApiAccessForm } from '@/components/ApiAccessForm'
@@ -15,7 +16,7 @@ import {
   Globe, 
   CheckCircle,
   ArrowRight,
-//   Book,
+  Book,
   TrendingDown,
   Clock,
   Users,
@@ -308,10 +309,12 @@ export default function ApiPage() {
                   </div>
                 </div>
                 
-                {/* <Button size="lg" variant="outline">
-                  <Book className="w-4 h-4 mr-2" />
-                  View Documentation
-                </Button> */}
+                <Button size="lg" variant="outline" asChild>
+                  <Link to="/api-docs" className="flex items-center gap-2">
+                    <Book className="w-4 h-4" />
+                    View API Documentation
+                  </Link>
+                </Button>
               </div>
               
               <Card>

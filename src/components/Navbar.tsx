@@ -21,9 +21,9 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'What is TOON?', href: '/what-is-toon' },
   { name: 'API Access', href: '/api' },
+  { name: 'API Docs', href: '/api-docs' },
   { name: 'Features', href: '/#features' },
   { name: 'Examples', href: '/#examples' },
-  { name: 'Documentation', href: '/#docs' },
 ]
 
 const tools = [
