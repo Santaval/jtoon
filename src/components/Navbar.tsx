@@ -20,7 +20,7 @@ import {
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'What is TOON?', href: '/what-is-toon' },
-  { name: 'API Access', href: '/api' },
+  { name: 'API', href: '/api' },
   { name: 'API Docs', href: '/api-docs' },
   { name: 'Features', href: '/#features' },
   { name: 'Examples', href: '/#examples' },
@@ -40,10 +40,10 @@ const tools = [
     description: 'Transform CSV to TOON format'
   },
   { 
-    name: 'API Access', 
-    href: '/api',
+    name: 'API Documentation', 
+    href: '/api-docs',
     icon: Database,
-    description: 'Programmatic converter access'
+    description: 'Complete API reference guide'
   },
 ]
 

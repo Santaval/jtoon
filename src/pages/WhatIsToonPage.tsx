@@ -59,8 +59,8 @@ const relatedLinks = [
     href: '/csv-to-toon'
   },
   {
-    title: 'TOON API Access',
-    description: 'Get programmatic access to TOON conversion services',
+    title: 'Free TOON API',
+    description: 'Use our free REST API for programmatic TOON conversion',
     href: '/api'
   },
   {

@@ -49,12 +49,12 @@ const converterTools = [
 //     color: 'from-purple-500 to-violet-500',
 //   },
   {
-    id: 'api-access',
-    title: 'API Access',
-    description: 'Programmatic access to all TOON converters',
+    id: 'api-docs',
+    title: 'API Documentation',
+    description: 'Free REST API for programmatic data conversion',
     icon: Database,
-    href: '/api',
-    savings: 'Custom',
+    href: '/api-docs',
+    savings: 'Free',
     popular: true,
     color: 'from-orange-500 to-red-500',
   },
@@ -176,7 +176,7 @@ export function HeroSection() {
                     size="sm" 
                     className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
                   >
-                    {tool.id === 'json-to-toon' || tool.id === 'csv-to-toon' || tool.id === 'api-access' ? (
+                    {tool.id === 'json-to-toon' || tool.id === 'csv-to-toon' || tool.id === 'api-docs' ? (
                       <Link to={tool.href}>
                         Try Now
                         <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />

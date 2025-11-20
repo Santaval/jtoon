@@ -2,11 +2,10 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { ApiAccessForm } from '@/components/ApiAccessForm'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { motion } from 'motion/react'
 import { 
   Code, 
@@ -17,258 +16,199 @@ import {
   CheckCircle,
   ArrowRight,
   Book,
-  TrendingDown,
   Clock,
-  Users,
-  Star
+  Users
 } from 'lucide-react'
 
 const features = [
   {
     icon: Zap,
-    title: 'Lightning Fast',
-    description: 'High-performance API with < 100ms response times'
+    title: 'Free & Open',
+    description: 'No API keys, no registration - start using immediately'
   },
   {
     icon: Shield,
-    title: 'Secure & Reliable',
-    description: '99.9% uptime with enterprise-grade security'
+    title: 'Reliable',
+    description: 'Built for production with 99.9% uptime guarantee'
   },
   {
     icon: Globe,
-    title: 'Global CDN',
-    description: 'Distributed endpoints for optimal performance worldwide'
+    title: 'Fast Global CDN',
+    description: 'Low latency worldwide with edge computing'
   },
   {
     icon: Database,
-    title: 'Multiple Formats',
-    description: 'Convert JSON, CSV, XML, and more to TOON format'
+    title: 'Format Support',
+    description: 'JSON ↔ TOON conversion with more formats coming'
+  },
+  {
+    icon: Code,
+    title: 'Developer Friendly',
+    description: 'RESTful API with comprehensive documentation'
+  },
+  {
+    icon: Clock,
+    title: 'Rate Limited',
+    description: '100 requests per 15 minutes - fair usage for all'
   }
 ]
 
-const pricingTiers = [
+const codeExample = `curl -X POST https://api.mytoontools.com/convert \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "from": "JSON",
+    "to": "TOON",
+    "content": "{\\"name\\": \\"John\\", \\"age\\": 30}"
+  }'`
+
+const benefits = [
   {
-    name: 'Free',
-    price: '$0',
-    period: '/month',
-    description: 'Perfect for getting started',
-    features: [
-      '1M tokens/month',
-      'JSON to TOON conversion',
-      'Basic API access',
-      'Community support'
-    ],
-    popular: false,
-    buttonText: 'Get Started',
-    limit: '< 1M tokens'
+    icon: Users,
+    title: '10,000+ Developers',
+    description: 'Trusted by developers worldwide for data conversion'
   },
   {
-    name: 'Pro',
-    price: '$5',
-    period: '/month',
-    description: 'For growing businesses',
-    features: [
-      '10M tokens/month',
-      'All format conversions',
-      'Priority support',
-      'Advanced analytics',
-      'Custom rate limits'
-    ],
-    popular: true,
-    buttonText: 'Start Free Trial',
-    limit: '1M - 10M tokens'
+    icon: CheckCircle,
+    title: '99.9% Uptime',
+    description: 'Reliable service with minimal downtime'
   },
   {
-    name: 'Enterprise',
-    price: 'Custom',
-    period: '',
-    description: 'For large-scale operations',
-    features: [
-      'Unlimited tokens',
-      'Dedicated infrastructure',
-      '24/7 phone support',
-      'SLA guarantees',
-      'Custom integrations'
-    ],
-    popular: false,
-    buttonText: 'Contact Sales',
-    limit: '> 100M tokens'
+    icon: Zap,
+    title: 'Lightning Fast',
+    description: 'Average response time under 100ms'
   }
 ]
-
-const codeExample = `// Install the TOON API client
-npm install @toon-format/api
-
-// Basic usage
-import { ToonApi } from '@toon-format/api'
-
-const client = new ToonApi('your-api-key')
-
-// Convert JSON to TOON
-const result = await client.convert({
-  format: 'json-to-toon',
-  data: {
-    "users": [
-      {"id": 1, "name": "John Doe", "email": "john@example.com"},
-      {"id": 2, "name": "Jane Smith", "email": "jane@example.com"}
-    ]
-  }
-})
-
-console.log(result.toon) // Converted TOON format
-console.log(result.stats) // Conversion statistics`
 
 export default function ApiPage() {
   useEffect(() => {
-    document.title = 'TOON API - Programmatic Data Conversion | JTOON'
+    document.title = 'Free API - MyToonTools | Open REST API for Data Conversion'
     
     const metaDescription = document.querySelector('meta[name="description"]')
     if (metaDescription) {
-      metaDescription.setAttribute('content', 'Get programmatic access to TOON converters with our REST API. Convert JSON, CSV, XML to token-efficient TOON format. Free tier available.')
-    }
-    
-    // Add JSON-LD structured data
-    const jsonLd = {
-      '@context': 'https://schema.org',
-      '@type': 'APIReference',
-      'name': 'TOON Conversion API',
-      'description': 'RESTful API for converting various data formats to TOON notation',
-      'provider': {
-        '@type': 'Organization',
-        'name': 'JTOON',
-        'url': 'https://jtoon.dev'
-      },
-      'documentation': 'https://jtoon.dev/api#documentation',
-      'offers': [
-        {
-          '@type': 'Offer',
-          'name': 'Free Tier',
-          'price': '0',
-          'priceCurrency': 'USD'
-        },
-        {
-          '@type': 'Offer',
-          'name': 'Pro Tier',
-          'price': '29',
-          'priceCurrency': 'USD'
-        }
-      ]
-    }
-    
-    let script = document.querySelector('script[type="application/ld+json"]') as HTMLScriptElement
-    if (script) {
-      script.textContent = JSON.stringify(jsonLd)
-    } else {
-      script = document.createElement('script') as HTMLScriptElement
-      script.type = 'application/ld+json'
-      script.textContent = JSON.stringify(jsonLd)
-      document.head.appendChild(script)
-    }
-    
-    return () => {
-      const existingScript = document.querySelector('script[type="application/ld+json"]')
-      if (existingScript) {
-        document.head.removeChild(existingScript)
-      }
+      metaDescription.setAttribute('content', 'Free REST API for converting between JSON and TOON formats. No API keys required - start using immediately with our open API.')
     }
   }, [])
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <Navbar />
-      
-      <main className="pt-16">
-        {/* Breadcrumbs */}
-        <div className="bg-muted/30 border-b">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <div className="relative overflow-hidden bg-linear-to-b from-background via-background/95 to-background">
+          <div className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 lg:px-8">
             <Breadcrumbs 
               items={[
                 { label: 'Home', href: '/' },
-                { label: 'API Access', href: '/api' }
+                { label: 'API', href: '/api' }
               ]} 
             />
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="mx-auto max-w-4xl text-center"
+            >
+              <Badge variant="secondary" className="mb-6">
+                Free & Open API
+              </Badge>
+              
+              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl mb-6">
+                MyToonTools
+                <span className="text-primary"> REST API</span>
+              </h1>
+              
+              <p className="text-xl leading-8 text-muted-foreground mb-10">
+                Convert between JSON and TOON formats programmatically with our free, 
+                open REST API. No registration, no API keys - just start converting.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                <Button size="lg" asChild>
+                  <Link to="/api-docs" className="flex items-center gap-2">
+                    <Book className="w-4 h-4" />
+                    View Documentation
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <Link to="/json-to-toon">
+                    Try Web Converter
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Quick API Info */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+                <Card>
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <Globe className="h-8 w-8 text-primary mx-auto mb-2" />
+                      <h3 className="font-semibold text-foreground">Base URL</h3>
+                      <p className="text-sm text-muted-foreground">api.mytoontools.com</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <Clock className="h-8 w-8 text-primary mx-auto mb-2" />
+                      <h3 className="font-semibold text-foreground">Rate Limit</h3>
+                      <p className="text-sm text-muted-foreground">100 req / 15 min</p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <Shield className="h-8 w-8 text-primary mx-auto mb-2" />
+                      <h3 className="font-semibold text-foreground">Auth</h3>
+                      <p className="text-sm text-muted-foreground">None required</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </motion.div>
           </div>
         </div>
-        
-        {/* Hero Section */}
-        <section className="relative py-24 sm:py-32" aria-labelledby="api-hero-heading">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                <Badge variant="secondary" className="mb-4 px-3 py-1">
-                  <Code className="w-3 h-3 mr-1" />
-                  Developer API
-                </Badge>
-                
-                <h1 id="api-hero-heading" className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-                  TOON Conversion{' '}
-                  <span className="bg-linear-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
-                    API
-                  </span>
-                </h1>
-                
-                <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                  Integrate token-efficient data conversion into your applications with our 
-                  RESTful API. <strong>Reduce LLM costs by up to 70%</strong> with programmatic access.
-                </p>
-              </motion.div>
 
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex justify-center items-center gap-8 mb-12 text-sm text-muted-foreground"
-              >
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-green-500" />
-                  <span>&lt; 100ms response time</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-blue-500" />
-                  <span>99.9% uptime SLA</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="w-4 h-4 text-purple-500" />
-                  <span>Free tier available</span>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* Features Grid */}
-        <section className="py-24 bg-muted/30" aria-labelledby="api-features-heading">
+        {/* Features Section */}
+        <section className="py-24 bg-muted/30" aria-labelledby="features-heading">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 id="api-features-heading" className="text-3xl font-bold text-foreground sm:text-4xl">
-                Enterprise-Ready API
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 id="features-heading" className="text-3xl font-bold text-foreground mb-4">
+                Why Choose Our API?
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Built for scale with the features you need for production deployments
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Built for developers, by developers. Get started in seconds with no barriers.
               </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <motion.div
                   key={feature.title}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <Card className="text-center h-full">
-                    <CardHeader>
-                      <div className="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
-                        <feature.icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <CardTitle className="text-xl">{feature.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <CardDescription>{feature.description}</CardDescription>
+                  <Card className="h-full hover:shadow-md transition-shadow">
+                    <CardContent className="pt-6">
+                      <feature.icon className="h-12 w-12 text-primary mb-4" />
+                      <h3 className="text-xl font-semibold text-foreground mb-3">
+                        {feature.title}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {feature.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -277,181 +217,150 @@ export default function ApiPage() {
           </div>
         </section>
 
-        {/* Code Example */}
+        {/* Code Example Section */}
         <section className="py-24" aria-labelledby="api-example-heading">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 id="api-example-heading" className="text-3xl font-bold text-foreground mb-6">
-                  Simple Integration
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Get started in minutes with our intuitive API. Convert any data format 
-                  to TOON with just a few lines of code.
-                </p>
-                
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                    <span>RESTful endpoints</span>
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <h2 id="api-example-heading" className="text-3xl font-bold text-foreground mb-6">
+                    Simple Integration
+                  </h2>
+                  <p className="text-lg text-muted-foreground mb-8">
+                    Get started in minutes with our intuitive API. Convert any data format 
+                    to TOON with just a few lines of code.
+                  </p>
+                  
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>RESTful endpoints</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>JSON request/response</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>Comprehensive error handling</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      <span>No authentication required</span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                    <span>JSON request/response</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                    <span>Comprehensive error handling</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                    <span>Real-time conversion statistics</span>
-                  </div>
-                </div>
-                
-                <Button size="lg" variant="outline" asChild>
-                  <Link to="/api-docs" className="flex items-center gap-2">
-                    <Book className="w-4 h-4" />
-                    View API Documentation
-                  </Link>
-                </Button>
+                  
+                  <Button size="lg" variant="outline" asChild>
+                    <Link to="/api-docs" className="flex items-center gap-2">
+                      <Book className="w-4 h-4" />
+                      View API Documentation
+                    </Link>
+                  </Button>
+                </motion.div>
               </div>
               
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg font-mono">Quick Start</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <pre className="text-sm overflow-x-auto bg-muted rounded-lg p-4">
-                    <code>{codeExample}</code>
-                  </pre>
-                </CardContent>
-              </Card>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg font-mono">Quick Start</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <pre className="text-sm bg-muted p-4 rounded-lg overflow-x-auto">
+                      <code>{codeExample}</code>
+                    </pre>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </div>
           </div>
         </section>
 
-        {/* Pricing */}
-        <section className="py-24 bg-muted/30" aria-labelledby="api-pricing-heading">
+        {/* Benefits Section */}
+        <section className="py-24 bg-muted/30">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 id="api-pricing-heading" className="text-3xl font-bold text-foreground sm:text-4xl">
-                Simple, Transparent Pricing
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-3xl font-bold text-foreground mb-4">
+                Trusted by Developers
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Choose the plan that fits your usage. All plans include core features.
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Join thousands of developers using MyToonTools API for their data conversion needs.
               </p>
-            </div>
-            
+            </motion.div>
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {pricingTiers.map((tier, index) => (
+              {benefits.map((benefit, index) => (
                 <motion.div
-                  key={tier.name}
+                  key={benefit.title}
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="text-center"
                 >
-                  <Card className={`relative ${tier.popular ? 'ring-2 ring-primary' : ''}`}>
-                    {tier.popular && (
-                      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <Badge className="px-3 py-1">
-                          <Star className="w-3 h-3 mr-1" />
-                          Most Popular
-                        </Badge>
-                      </div>
-                    )}
-                    
-                    <CardHeader className="text-center">
-                      <CardTitle className="text-2xl">{tier.name}</CardTitle>
-                      <CardDescription>{tier.description}</CardDescription>
-                      <div className="mt-4">
-                        <span className="text-4xl font-bold">{tier.price}</span>
-                        <span className="text-muted-foreground">{tier.period}</span>
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {tier.limit}
-                      </div>
-                    </CardHeader>
-                    
-                    <CardContent className="space-y-4">
-                      <ul className="space-y-3">
-                        {tier.features.map((feature) => (
-                          <li key={feature} className="flex items-center gap-2">
-                            <CheckCircle className="w-4 h-4 text-green-500" />
-                            <span className="text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      <Button 
-                        className={`w-full ${tier.popular ? '' : 'variant-outline'}`}
-                        variant={tier.popular ? 'default' : 'outline'}
-                        onClick={() => {
-                            window.location.href = '#api-access'
-                        }}
-                      >
-                        {tier.buttonText}
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </CardContent>
-                  </Card>
+                  <benefit.icon className="h-12 w-12 text-primary mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold text-foreground mb-3">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {benefit.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* API Access Form */}
-        <section className="py-24" aria-labelledby="api-access-heading" id='api-access'>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 id="api-access-heading" className="text-3xl font-bold text-foreground sm:text-4xl">
-                Get Your API Key
+        {/* CTA Section */}
+        <section className="py-24">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold text-foreground mb-6">
+                Ready to Get Started?
               </h2>
-              <p className="mt-4 text-lg text-muted-foreground">
-                Start converting data to TOON format with a free API key
+              <p className="text-lg text-muted-foreground mb-8">
+                Start converting data formats with our free API today. No sign-up required.
               </p>
-            </div>
-            
-            <ApiAccessForm />
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" asChild>
+                  <Link to="/api-docs" className="flex items-center gap-2">
+                    Read Documentation
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" asChild>
+                  <Link to="/json-to-toon">
+                    Try Web Converter
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </section>
-
-        {/* Stats Section */}
-        <section className="py-24 bg-muted/30" aria-labelledby="api-stats-heading">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 id="api-stats-heading" className="text-3xl font-bold text-foreground sm:text-4xl">
-                Trusted by Developers
-              </h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">99.9%</div>
-                <div className="text-muted-foreground">Uptime</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2 flex items-center justify-center gap-1">
-                  <TrendingDown className="w-8 h-8" />
-                  70%
-                </div>
-                <div className="text-muted-foreground">Token Reduction</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">&lt; 100ms</div>
-                <div className="text-muted-foreground">Response Time</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-                <div className="text-muted-foreground">Support</div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
+      </div>
       
       <Footer />
-    </div>
+    </>
   )
 }
